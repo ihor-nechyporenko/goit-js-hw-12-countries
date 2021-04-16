@@ -1,13 +1,16 @@
-import './styles.scss';
+import './scss/styles.scss';
+import './scss/loader.scss';
 import refs from './js/refs';
 import API from './js/fetch-countries';
 import countryCardTpl from './tamplates/country-card.hbs';
 import countryListTpl from './tamplates/country-list.hbs';
 import { warningNotice, errorNotice, clarificationNotice, successNotice } from './js/notice';
+import loader from './js/loader';
 
 const _ = require('lodash.debounce');
 
 refs.searchInput.addEventListener('input', _(onSearh, 500));
+refs.searchInput.addEventListener('input', loader);
 
 function onSearh(e) {
     API.fetchCountryByName(e.target.value)
